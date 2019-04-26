@@ -3,7 +3,7 @@
   "type": "wordpress-plugin",
   "license": "ISC",
   "description": "A columns block for Gutenberg that uses flex for layouts",
-  "homepage": "git@github.com:cs-ferguson/columns-block.git",
+  "homepage": "https://github.com/cs-ferguson/columns-block",
   "authors": [
     {
       "name": "Chris Ferguson",
@@ -16,7 +16,7 @@
     "gutenberg"
   ],
   "support": {
-    "issues": "git@github.com:cs-ferguson/columns-block.git/issues"
+    "issues": "https://github.com/cs-ferguson/columns-block/issues"
   },
   "require": {
     "php": ">=7",
