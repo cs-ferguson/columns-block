@@ -1,25 +1,73 @@
 @import './common.scss';
 
-section.columns{
+$gap: 1rem;
+
+section.columns-wrapper{
   width: 100%;
   display: flex;
   flex-direction: row;
-  align-items: center;
+  align-items: stretch;
   justify-content: center;
-  flex-wrap: wrap; 
+  flex-wrap: wrap;
 
   >div{
-    //default 2-col
-    flex-basis: 50%;
-    flex-grow: 1;
-    padding: 0 1rem;
+    padding: 0 #{$gap};
 
     &:first-child{
-        padding-left: 0rem;
-      }
-      &:last-child{
-        padding-right: 0rem;
-      }
+      padding-left: 0rem;
+    }
+    &:last-child{
+      padding-right: 0rem;
+    }
   }
 
+  &.spacing-content{
+    flex-wrap: nowrap;
+  }
+
+  &.spacing-even.columns-2{
+    > div{
+      flex-basis: calc(100% / 2);
+
+      &:last-child, &:first-child {
+        flex-basis: calc( (100% / 2) - #{$gap} );
+      }
+    }
+  }
+  &.spacing-even.columns-3{
+    > div{
+      flex-basis: calc(100% / 3);
+
+      &:last-child, &:first-child {
+        flex-basis: calc( (100% / 3) - #{$gap} );
+      }
+    }
+  }
+  &.spacing-even.columns-4{
+    > div{
+      flex-basis: calc(100% / 4);
+
+      &:last-child, &:first-child {
+        flex-basis: calc( (100% / 4) - #{$gap} );
+      }
+    }
+  }
+  &.spacing-even.columns-5{
+    > div{
+      flex-basis: calc(100% / 5);
+
+      &:last-child, &:first-child {
+        flex-basis: calc( (100% / 5) - #{$gap} );
+      }
+    }
+  }
+  &.spacing-even.columns-6{
+    > div{
+      flex-basis: calc(100% / 6);
+
+      &:last-child, &:first-child {
+        flex-basis: calc( (100% / 6) - #{$gap} );
+      }
+    }
+  }
 }

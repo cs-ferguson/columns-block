@@ -1,12 +1,11 @@
 const { PlainText, InspectorControls, InnerBlocks } = wp.editor;
-const { PanelBody, RangeControl } = wp.components;
+const { PanelBody, TextControl, SelectControl } = wp.components;
 const { registerBlockType } = wp.blocks;
 const { Fragment, createElement } = wp.element;
 const { __ } = wp.i18n;
 
-const iconEl = createElement('svg', { width: 20, height: 20, viewBox: "0 0 241.95 283.46" },
-  createElement('path', { d: "M41.51,41.51,61.56,61.56a113.38,113.38,0,0,1,160.35,0l20-20.05A141.73,141.73,0,0,0,41.51,41.51 M41.51,41.51,61.56,61.56a113.38,113.38,0,0,0,0,160.35L41.51,242A141.73,141.73,0,0,1,41.51,41.51Z M242,242l-20-20a113.38,113.38,0,0,1-160.35,0L41.51,242A141.73,141.73,0,0,0,242,242Z", fill: "#303030"})
-);
+//import icon
+import { cfIcon } from './icon.js';
 
 //import column-block
 import './column.js';
@@ -26,12 +25,16 @@ const getColumnsTemplate = (numCols) => {
 
 registerBlockType('chrisf/columns-block', {
   title: 'Columns Block',
-  icon: iconEl,
+  icon: cfIcon,
   category: 'layout',
   attributes: {
     numCols: {
-      type: 'text',
-      default: '2'
+      type: 'integer',
+      default: 2
+    },
+    sizing: {
+      type: 'string',
+      default: 'even'
     }
   },
   supports: {
@@ -42,25 +45,33 @@ registerBlockType('chrisf/columns-block', {
   edit( {attributes, className, setAttributes} ) {
 
     const { numCols } = attributes;
-    const classes = 'columns-wrapper columns-' + numCols;
+    const classes = 'columns-wrapper columns-' + numCols + ' spacing-' + attributes.sizing;
 
     return[
       <InspectorControls>
         <PanelBody>
           <div>
-            <strong>Select number of columns:</strong>
-            <RangeControl
-  						label="columns"
+            <TextControl
+              type="number"
+  						label="Select number of columns:"
   						value={ attributes.numCols }
   						onChange={ ( nextColumns ) => {
   							setAttributes( {
-  								numCols: nextColumns,
+  								numCols: parseInt(nextColumns, 10)
   							} );
   						} }
-  						min={ 2 }
-  						max={ 4 }
+  						min="2"
+  						max="6"
   					/>
           </div>
+        </PanelBody>
+        <PanelBody>
+          <SelectControl
+            onChange={ (value) => setAttributes({ sizing: value }) }
+            value={ attributes.sizing }
+            label={'How would you like your columns to size?:'}
+            options={[ {value: 'even', label: 'Evenly'}, {value: 'content', label: 'By content size'} ]}
+          />
         </PanelBody>
       </InspectorControls>,
       <section className={classes}>
@@ -76,10 +87,10 @@ registerBlockType('chrisf/columns-block', {
   save( { attributes } ) {
 
     const { numCols } = attributes;
-    const classes = 'columns columns-' + numCols;
+    const classes = 'columns-wrapper columns-' + numCols + ' spacing-' + attributes.sizing;
 
     return (
-      <section className="columns">
+      <section className={ classes }>
         <InnerBlocks.Content />
       </section>
     );

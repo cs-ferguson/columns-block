@@ -1,0 +1,25 @@
+{
+  "name": "chrisf/columns-block",
+  "type": "wordpress-plugin",
+  "license": "ISC",
+  "description": "A columns block for Gutenberg that uses flex for layouts",
+  "homepage": "git@github.com:cs-ferguson/columns-block.git",
+  "authors": [
+    {
+      "name": "Chris Ferguson",
+      "email": "christopher.stanley.ferguson@gmail.com",
+      "homepage": "https://github.com/cs-ferguson"
+    }
+  ],
+  "keywords": [
+    "wordpress",
+    "gutenberg"
+  ],
+  "support": {
+    "issues": "git@github.com:cs-ferguson/columns-block.git/issues"
+  },
+  "require": {
+    "php": ">=7",
+    "composer/installers": "~1.0"
+  }
+}

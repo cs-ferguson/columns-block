@@ -3,12 +3,11 @@
 .wp-block { // This may need to be .wp-block in WordPress 5+
 
   //the editor wrapper
-  &[data-type="kne/columns-block"]{
+  &[data-type="chrisf/columns-block"]{
     margin: 1rem;
-    max-width: 100%;
+    max-width: unset;
 
     .columns-wrapper {
-      border: 1px solid grey;
       padding: 1rem;
       width: 100%;
       position: relative;
@@ -17,36 +16,50 @@
       .editor-inner-blocks > div{
         display: flex;
         flex-direction: row;
-        align-items: center;
+        align-items: stretch;
         justify-content: center;
         flex-wrap: wrap;
 
         .wp-block{
-          //default 2 cols
-          flex-basis: 50%;
-          flex-grow: 1;
+          flex-grow: 1; 
+        }
+      }
+
+      &.spacing-content .editor-inner-blocks > div{
+        flex-wrap: nowrap;
+      }
+
+      &.spacing-even.columns-2{
+        .editor-inner-blocks > div .wp-block{
+          flex-basis: calc(100% / 2);
+        }
+      }
+      &.spacing-even.columns-3{
+        .editor-inner-blocks > div .wp-block{
+          flex-basis: calc(100% / 3);
+        }
+      }
+      &.spacing-even.columns-4{
+        .editor-inner-blocks > div .wp-block{
+          flex-basis: calc(100% / 4);
+        }
+      }
+      &.spacing-even.columns-5{
+        .editor-inner-blocks > div .wp-block{
+          flex-basis: calc(100% / 5);
+        }
+      }
+      &.spacing-even.columns-6{
+        .editor-inner-blocks > div .wp-block{
+          flex-basis: calc(100% / 6);
         }
       }
     }
   }
 
   //single column wrapper
-  &[data-type="kne/column-block"]{
+  &[data-type="chrisf/column-block"]{
     min-height: 12rem;
     border: 1px dashed #000;
-
-    .editor-inner-blocks{
-      min-height: 100%;
-      >div.editor-block-list__layout{
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        justify-content: flex-start;
-        flex-basis: 100%;
-        flex-wrap: wrap;
-
-      }
-    }
-
   }
 }
