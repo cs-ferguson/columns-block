@@ -45,7 +45,7 @@ registerBlockType('chrisf/columns-block', {
   edit( {attributes, className, setAttributes} ) {
 
     const { numCols } = attributes;
-    const classes = 'columns-wrapper columns-' + numCols + ' spacing-' + attributes.sizing;
+    const classes = 'columns-wrapper-editor columns-' + numCols + ' spacing-' + attributes.sizing;
 
     return[
       <InspectorControls>

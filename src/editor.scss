@@ -7,7 +7,7 @@
     margin: 1rem;
     max-width: unset;
 
-    .columns-wrapper {
+    .columns-wrapper-editor {
       padding: 1rem;
       width: 100%;
       position: relative;
@@ -21,7 +21,7 @@
         flex-wrap: wrap;
 
         .wp-block{
-          flex-grow: 1; 
+          flex-grow: 1;
         }
       }
 
