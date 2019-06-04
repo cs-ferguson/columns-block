@@ -5,7 +5,7 @@
  * Description: For laying out content blocks in columns using flex
  * Author: Chris Ferguson
  * Author URI: https://github.com/cs-ferguson
- * Version: 1.0.0
+ * Version: 1.0.3
  * License: GPL2+
  * License URI: https://www.gnu.org/licenses/gpl-2.0.txt
  */
