@@ -23,6 +23,30 @@ const getColumnsTemplate = (numCols) => {
   return els;
 }
 
+const setSizingOptions = (numCols) => {
+  let options = [ {value: 'even', label: 'Evenly'}, {value: 'content', label: 'By content size'} ]
+  if( numCols == 2){
+    options.push({
+      value: 'two-one',
+      label: '2:1'
+    },{
+      value: 'one-two',
+      label: '1:2'
+    })
+  }
+  return options;
+}
+
+const setCollapseOptions = (sizing) => {
+  let options = [
+    {value: 'center', label: 'Centre'},
+    {value: 'grow', label: 'Grow to fill row'},
+    {value: 'left', label: 'To left'},
+    {value: 'right', label: 'To right'}
+  ]
+  return options;
+}
+
 registerBlockType('chrisf/columns-block', {
   title: 'Columns Block',
   icon: cfIcon,
@@ -35,6 +59,18 @@ registerBlockType('chrisf/columns-block', {
     sizing: {
       type: 'string',
       default: 'even'
+    },
+    horizontalGap: {
+      type: 'integer',
+      default: 0
+    },
+    verticalGap: {
+      type: 'integer',
+      default: 0
+    },
+    collapse: {
+      type: 'string',
+      default: 'center'
     }
   },
   supports: {
@@ -45,7 +81,7 @@ registerBlockType('chrisf/columns-block', {
   edit( {attributes, className, setAttributes} ) {
 
     const { numCols } = attributes;
-    const classes = 'columns-wrapper-editor columns-' + numCols + ' spacing-' + attributes.sizing;
+    const classes = 'columns-wrapper-editor columns-' + numCols + ' sizing-' + attributes.sizing + ' horizontal-gap-' + attributes.horizontalGap + ' collapse-' + attributes.collapse;
 
     return[
       <InspectorControls>
@@ -70,7 +106,27 @@ registerBlockType('chrisf/columns-block', {
             onChange={ (value) => setAttributes({ sizing: value }) }
             value={ attributes.sizing }
             label={'How would you like your columns to size?:'}
-            options={[ {value: 'even', label: 'Evenly'}, {value: 'content', label: 'By content size'} ]}
+            options={ setSizingOptions( attributes.numCols )}
+          />
+          <SelectControl
+            onChange={ (value) => setAttributes({ collapse: value }) }
+            value={ attributes.collapse }
+            label={'How should your columns break when the screen is not big enough?:'}
+            options={ setCollapseOptions( attributes.sizing )}
+          />
+        </PanelBody>
+        <PanelBody>
+          <TextControl
+            type="number"
+            label="Gap size between columns:"
+            value={ attributes.horizontalGap }
+            onChange={ ( gapSize ) => {
+              setAttributes( {
+                horizontalGap: parseInt(gapSize, 10)
+              } );
+            } }
+            min="0"
+            max="3"
           />
         </PanelBody>
       </InspectorControls>,
@@ -87,7 +143,7 @@ registerBlockType('chrisf/columns-block', {
   save( { attributes } ) {
 
     const { numCols } = attributes;
-    const classes = 'columns-wrapper columns-' + numCols + ' spacing-' + attributes.sizing;
+    const classes = 'columns-wrapper columns-' + numCols + ' sizing-' + attributes.sizing + ' horizontal-gap-' + attributes.horizontalGap + ' collapse-' + attributes.collapse;
 
     return (
       <section className={ classes }>

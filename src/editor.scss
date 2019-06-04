@@ -13,7 +13,7 @@
       position: relative;
       min-height: 8rem;
 
-      .editor-inner-blocks > div{
+      > .editor-inner-blocks > div{
         display: flex;
         flex-direction: row;
         align-items: stretch;
@@ -24,34 +24,64 @@
           flex-grow: 1;
         }
       }
-
-      &.spacing-content .editor-inner-blocks > div{
+      //size to content
+      &.sizing-content > .editor-inner-blocks > div{
         flex-wrap: nowrap;
       }
-
-      &.spacing-even.columns-2{
-        .editor-inner-blocks > div .wp-block{
+      //size evenly
+      &.sizing-even.columns-2{
+        > .editor-inner-blocks > div .wp-block{
           flex-basis: calc(100% / 2);
         }
       }
-      &.spacing-even.columns-3{
-        .editor-inner-blocks > div .wp-block{
+      &.sizing-even.columns-3{
+        > .editor-inner-blocks > div .wp-block{
           flex-basis: calc(100% / 3);
         }
       }
-      &.spacing-even.columns-4{
-        .editor-inner-blocks > div .wp-block{
+      &.sizing-even.columns-4{
+        > .editor-inner-blocks > div .wp-block{
           flex-basis: calc(100% / 4);
         }
       }
-      &.spacing-even.columns-5{
-        .editor-inner-blocks > div .wp-block{
+      &.sizing-even.columns-5{
+        > .editor-inner-blocks > div .wp-block{
           flex-basis: calc(100% / 5);
         }
       }
-      &.spacing-even.columns-6{
-        .editor-inner-blocks > div .wp-block{
+      &.sizing-even.columns-6{
+        > .editor-inner-blocks > div .wp-block{
           flex-basis: calc(100% / 6);
+        }
+      }
+      //size two to one
+      &.sizing-two-one{
+        > .editor-inner-blocks > div .wp-block:first-child{
+          flex-basis: calc( 100% * 2 / 3 );
+        }
+        > .editor-inner-blocks > div .wp-block:last-child{
+          flex-basis: calc( 100% / 3 );
+        }
+      }
+      //gaps
+      &.horizontal-gap-0{
+        > .editor-inner-blocks div[data-type="chrisf/column-block"] div.column{
+          padding: 0;
+        }
+      }
+      &.horizontal-gap-1{
+        > .editor-inner-blocks div[data-type="chrisf/column-block"] div.column{
+          padding: 0 0.5rem;
+        }
+      }
+      &.horizontal-gap-2{
+        > .editor-inner-blocks div[data-type="chrisf/column-block"] div.column{
+          padding: 0 1rem;
+        }
+      }
+      &.horizontal-gap-3{
+        > .editor-inner-blocks div[data-type="chrisf/column-block"] div.column{
+          padding: 0 1.5rem;
         }
       }
     }

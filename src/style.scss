@@ -1,7 +1,5 @@
 @import './common.scss';
 
-$gap: 1rem;
-
 section.columns-wrapper{
   width: 100%;
   display: flex;
@@ -11,63 +9,89 @@ section.columns-wrapper{
   flex-wrap: wrap;
 
   >div{
-    padding: 0 #{$gap};
-
-    &:first-child{
-      padding-left: 0rem;
-    }
-    &:last-child{
-      padding-right: 0rem;
-    }
   }
-
-  &.spacing-content{
+  //size to content
+  &.sizing-content{
     flex-wrap: nowrap;
   }
-
-  &.spacing-even.columns-2{
+  //size evenly
+  &.sizing-even.columns-2{
     > div{
       flex-basis: calc(100% / 2);
-
-      &:last-child, &:first-child {
-        flex-basis: calc( (100% / 2) - #{$gap} );
-      }
     }
   }
-  &.spacing-even.columns-3{
+  &.sizing-even.columns-3{
     > div{
       flex-basis: calc(100% / 3);
-
-      &:last-child, &:first-child {
-        flex-basis: calc( (100% / 3) - #{$gap} );
-      }
     }
   }
-  &.spacing-even.columns-4{
+  &.sizing-even.columns-4{
     > div{
       flex-basis: calc(100% / 4);
-
-      &:last-child, &:first-child {
-        flex-basis: calc( (100% / 4) - #{$gap} );
-      }
     }
   }
-  &.spacing-even.columns-5{
+  &.sizing-even.columns-5{
     > div{
       flex-basis: calc(100% / 5);
-
-      &:last-child, &:first-child {
-        flex-basis: calc( (100% / 5) - #{$gap} );
-      }
     }
   }
-  &.spacing-even.columns-6{
+  &.sizing-even.columns-6{
     > div{
       flex-basis: calc(100% / 6);
-
-      &:last-child, &:first-child {
-        flex-basis: calc( (100% / 6) - #{$gap} );
+    }
+  }
+  //size two to one
+  &.sizing-two-one{
+    >div{
+      &:first-child{
+        flex-basis: calc( 100% * 2 / 3 );
+      }
+      &:last-child{
+        flex-basis: calc( 100% / 3 );
       }
     }
   }
+  //GAPS
+  &.horizontal-gap-0 {
+    >div{
+      padding: 0;
+    }
+  }
+  &.horizontal-gap-1 {
+    width: calc(100% + 1rem);
+    left: 50%;
+    margin-left: calc( (50% + 0.5rem) * (-1) );
+    >div{
+      padding: 0.5rem;
+    }
+  }
+  &.horizontal-gap-2 {
+    width: calc(100% + 2rem);
+    left: 50%;
+    margin-left: calc( (50% + 1rem) * (-1) );
+    >div{
+      padding: 1rem;
+    }
+  }
+  &.horizontal-gap-3 {
+    width: calc(100% + 3rem);
+    left: 50%;
+    margin-left: calc( (50% + 1.5rem) * (-1) );
+    >div{
+      padding: 1.5rem;
+    }
+  }
+  //collapse
+  &.collapse-left{
+    justify-content: flex-start;
+  }
+  &.collapse-right{
+    justify-content: flex-end;
+  }
+  &.collapse-grow{
+    >div{
+      flex-grow: 1;
+    }
+  }
+
 }
