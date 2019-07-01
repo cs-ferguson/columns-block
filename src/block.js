@@ -80,8 +80,8 @@ registerBlockType('chrisf/columns-block', {
 
   edit( {attributes, className, setAttributes} ) {
 
-    const { numCols } = attributes;
-    const classes = 'columns-wrapper-editor columns-' + numCols + ' sizing-' + attributes.sizing + ' horizontal-gap-' + attributes.horizontalGap + ' collapse-' + attributes.collapse;
+    let { numCols } = attributes;
+    let classes = 'columns-wrapper-editor columns-' + numCols + ' sizing-' + attributes.sizing + ' horizontal-gap-' + attributes.horizontalGap + ' collapse-' + attributes.collapse;
 
     return[
       <InspectorControls>
@@ -142,8 +142,8 @@ registerBlockType('chrisf/columns-block', {
 
   save( { attributes } ) {
 
-    const { numCols } = attributes;
-    const classes = 'columns-wrapper columns-' + numCols + ' sizing-' + attributes.sizing + ' horizontal-gap-' + attributes.horizontalGap + ' collapse-' + attributes.collapse;
+    let { numCols } = attributes;
+    let classes = 'columns-wrapper columns-' + numCols + ' sizing-' + attributes.sizing + ' horizontal-gap-' + attributes.horizontalGap + ' collapse-' + attributes.collapse;
 
     return (
       <section className={ classes }>

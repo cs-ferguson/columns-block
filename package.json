@@ -1,6 +1,6 @@
 {
   "name": "columns-block",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "A columns block for Gutenberg that uses flex for layouts",
   "main": "src/block.js",
   "scripts": {

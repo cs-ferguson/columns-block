@@ -1,4 +1,4 @@
-const { InspectorControls, InnerBlocks, ColorPalette } = wp.editor;
+const { InspectorControls, InnerBlocks, ColorPalette } = wp.blockEditor;
 const { PanelBody } = wp.components;
 const { registerBlockType } = wp.blocks;
 

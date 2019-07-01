@@ -1,8 +1,9 @@
 @import './common.scss';
+@import './breakpoints';
 
 section.columns-wrapper{
   width: 100%;
-  display: flex;
+  display: inline-flex;
   flex-direction: row;
   align-items: stretch;
   justify-content: center;
@@ -12,7 +13,9 @@ section.columns-wrapper{
   }
   //size to content
   &.sizing-content{
-    flex-wrap: nowrap;
+    @include breakpoint (laptop) {
+      flex-wrap: nowrap;
+    }
   }
   //size evenly
   &.sizing-even.columns-2{
@@ -93,5 +96,4 @@ section.columns-wrapper{
       flex-grow: 1;
     }
   }
-
 }
